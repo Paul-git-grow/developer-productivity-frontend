@@ -478,3 +478,30 @@
     width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+    min-width: 60px;
+    padding: 12px 8px;
+  }
+
+  .sidebar .logo-text,
+  .sidebar .menu-label,
+  .sidebar .menu-text,
+  .sidebar .user-info {
+    display: none;
+  }
+
+  .sidebar-menu,
+  .menu-item {
+    width: 100%;
+  }
+
+  .menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+  }
+}

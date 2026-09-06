@@ -214,3 +214,52 @@
 }
 
 
+/* =========================
+   MOBILE HEADER
+========================= */
+
+@media (max-width: 768px) {
+
+  .header {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    padding: 10px 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  /* Search bar mobile-la hide */
+  .header-search,
+  .search-box,
+  .search-container {
+    display: none !important;
+  }
+
+  /* Right side icons */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  /* Profile text mobile-la hide */
+  .user-details,
+  .profile-info,
+  .user-info {
+    display: none !important;
+  }
+
+  /* Avatar */
+  .avatar,
+  .profile-avatar {
+    flex-shrink: 0;
+  }
+}
