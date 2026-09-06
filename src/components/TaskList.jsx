@@ -1,6 +1,6 @@
 import React from "react";
 import API from "../services/api";
-import "../styles/taskList.css";
+import "../styles/tasklist.css";
 
 function TaskList({ tasks = [], refreshTasks, setActivePage }) {
   const completedCount = tasks.filter(
