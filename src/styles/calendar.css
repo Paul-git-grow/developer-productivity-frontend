@@ -1,0 +1,543 @@
+/* ========================================
+   CALENDAR PAGE
+======================================== */
+
+.calendar-page {
+  width: 100%;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.calendar-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.calendar-header h2 {
+  margin: 0;
+
+  font-size: 24px;
+
+  color: #111827;
+}
+
+.calendar-header p {
+  margin-top: 6px;
+
+  font-size: 13px;
+
+  color: #9ca3af;
+}
+
+
+/* Today Button */
+
+.today-btn {
+  padding: 9px 16px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #4f46e5;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.today-btn:hover {
+  background: #eef2ff;
+}
+
+
+/* ========================================
+   CALENDAR LAYOUT
+======================================== */
+
+.calendar-layout {
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+
+  gap: 20px;
+
+  align-items: start;
+}
+
+
+/* ========================================
+   CALENDAR CARD
+======================================== */
+
+.calendar-card {
+  padding: 22px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+}
+
+
+/* Month Header */
+
+.calendar-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.calendar-top h3 {
+  margin: 0;
+
+  font-size: 16px;
+
+  color: #111827;
+}
+
+
+/* Arrows */
+
+.month-arrow {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #6b7280;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.month-arrow:hover {
+  background: #f3f4f6;
+
+  color: #4f46e5;
+}
+
+
+/* ========================================
+   WEEK DAYS
+======================================== */
+
+.week-days {
+  display: grid;
+
+  grid-template-columns: repeat(7, 1fr);
+
+  margin-bottom: 8px;
+}
+
+.week-days div {
+  padding: 8px 0;
+
+  text-align: center;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  color: #9ca3af;
+}
+
+
+/* ========================================
+   CALENDAR GRID
+======================================== */
+
+.calendar-grid {
+  display: grid;
+
+  grid-template-columns: repeat(7, 1fr);
+
+  gap: 5px;
+}
+
+
+/* Day */
+
+.calendar-day {
+  min-height: 70px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 9px;
+
+  border: 1px solid transparent;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #374151;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.calendar-day:hover {
+  background: #f8fafc;
+
+  border-color: #e5e7eb;
+}
+
+
+/* Empty */
+
+.calendar-day.empty {
+  cursor: default;
+
+  background: transparent;
+}
+
+
+/* Number */
+
+.day-number {
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+
+/* Selected */
+
+.calendar-day.selected {
+  background: #eef2ff;
+
+  border-color: #c7d2fe;
+
+  color: #4f46e5;
+}
+
+
+/* Today */
+
+.calendar-day.today .day-number {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: -3px;
+
+  border-radius: 50%;
+
+  background: #4f46e5;
+
+  color: #ffffff;
+
+  font-weight: 700;
+}
+
+
+/* Task Dot */
+
+.task-dot {
+  position: absolute;
+
+  bottom: 8px;
+  left: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: #4f46e5;
+}
+
+
+/* ========================================
+   SCHEDULE CARD
+======================================== */
+
+.schedule-card {
+  min-height: 300px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+}
+
+
+/* Header */
+
+.schedule-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 17px;
+
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.schedule-header span {
+  font-size: 9px;
+
+  color: #9ca3af;
+}
+
+.schedule-header h3 {
+  margin-top: 5px;
+
+  font-size: 15px;
+
+  color: #111827;
+}
+
+
+/* Add */
+
+.add-schedule-btn {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #4f46e5;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+
+/* ========================================
+   SCHEDULE LIST
+======================================== */
+
+.schedule-list {
+  padding-top: 15px;
+}
+
+
+/* Schedule */
+
+.schedule-item {
+  display: grid;
+
+  grid-template-columns: 65px 10px 1fr;
+
+  gap: 10px;
+
+  min-height: 60px;
+}
+
+
+/* Time */
+
+.schedule-time {
+  padding-top: 2px;
+
+  font-size: 10px;
+
+  color: #9ca3af;
+}
+
+
+/* Line */
+
+.schedule-line {
+  position: relative;
+
+  width: 1px;
+
+  background: #e5e7eb;
+}
+
+.schedule-line::before {
+  content: "";
+
+  position: absolute;
+
+  top: 3px;
+  left: -3px;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #4f46e5;
+}
+
+
+/* Info */
+
+.schedule-info {
+  padding-bottom: 15px;
+}
+
+.schedule-info h4 {
+  margin: 0;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: #374151;
+}
+
+.schedule-info span {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 9px;
+
+  color: #9ca3af;
+}
+
+
+/* ========================================
+   NO SCHEDULE
+======================================== */
+
+.no-schedule {
+  padding: 55px 10px;
+
+  text-align: center;
+}
+
+.no-schedule > div {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 12px;
+
+  border-radius: 12px;
+
+  background: #f3f4f6;
+
+  font-size: 20px;
+}
+
+.no-schedule h4 {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: #374151;
+}
+
+.no-schedule p {
+  margin-top: 6px;
+
+  font-size: 10px;
+
+  color: #9ca3af;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+  .calendar-layout {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .calendar-card {
+    padding: 12px;
+  }
+
+  .calendar-day {
+    min-height: 50px;
+
+    padding: 6px;
+  }
+
+  .week-days div {
+    font-size: 9px;
+  }
+
+  .day-number {
+    font-size: 10px;
+  }
+
+  .schedule-card {
+    padding: 15px;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .calendar-day {
+    min-height: 45px;
+
+    padding: 5px;
+  }
+
+  .calendar-top h3 {
+    font-size: 14px;
+  }
+
+}
+

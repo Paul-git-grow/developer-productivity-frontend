@@ -1,0 +1,216 @@
+.header {
+  height: 82px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 32px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* =========================
+   HEADER TITLE
+========================= */
+
+.header-title h1 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.header-title p {
+  margin: 5px 0 0;
+
+  font-size: 12px;
+
+  color: #9ca3af;
+}
+
+/* =========================
+   HEADER ACTIONS
+========================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+  width: 240px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 10px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+
+  background: #f9fafb;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: #9ca3af;
+}
+
+.search-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  margin-left: 8px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-size: 13px;
+
+  color: #111827;
+}
+
+.search-box input::placeholder {
+  color: #9ca3af;
+}
+
+.search-key {
+  padding: 4px 6px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  font-size: 9px;
+
+  color: #9ca3af;
+}
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+.notification-button {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  font-size: 15px;
+}
+
+.notification-button:hover {
+  background: #f9fafb;
+}
+
+/* Red notification dot */
+
+.notification-dot {
+  position: absolute;
+
+  top: 7px;
+  right: 7px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  border: 1px solid #ffffff;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.header-profile {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding-left: 5px;
+}
+
+.header-avatar {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eef2ff;
+
+  color: #4f46e5;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.header-user-info h4 {
+  margin: 0;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #111827;
+}
+
+.header-user-info p {
+  margin: 3px 0 0;
+
+  font-size: 10px;
+
+  color: #9ca3af;
+}
+
+.profile-arrow {
+  margin-left: 3px;
+
+  font-size: 16px;
+
+  color: #9ca3af;
+}
+
+@media (max-width: 700px) {
+  .header {
+    width: 100%;
+    max-width: 100%;
+
+    margin-left: 0 !important;
+
+    padding: 14px 16px;
+    box-sizing: border-box;
+  }
+}
+
+

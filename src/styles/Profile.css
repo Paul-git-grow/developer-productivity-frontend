@@ -1,0 +1,120 @@
+.profile-page {
+  width: 100%;
+  padding: 8px 4px 30px;
+  box-sizing: border-box;
+}
+
+.profile-heading {
+  margin-bottom: 25px;
+}
+
+.profile-heading h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #111827;
+}
+
+.profile-heading p {
+  margin: 7px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.profile-card {
+  max-width: 650px;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.profile-avatar {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 25px;
+
+  border-radius: 50%;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-field {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-field:last-child {
+  border-bottom: none;
+}
+
+.profile-field span {
+  display: block;
+  margin-bottom: 6px;
+
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.profile-field h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #111827;
+}
+
+.profile-error {
+  color: #dc2626;
+}
+
+/* DARK MODE */
+
+body.dark-theme .profile-heading h1,
+body.dark-theme .profile-field h3 {
+  color: #f9fafb;
+}
+
+body.dark-theme .profile-heading p,
+body.dark-theme .profile-field span {
+  color: #9ca3af;
+}
+
+body.dark-theme .profile-card {
+  background: #111827;
+  border-color: #374151;
+}
+
+body.dark-theme .profile-field {
+  border-color: #374151;
+}
+
+body.dark-theme .profile-avatar {
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .profile-card {
+    padding: 20px;
+  }
+
+  .profile-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}

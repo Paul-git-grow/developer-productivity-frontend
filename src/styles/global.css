@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+  background: #f5f7fb;
+  color: #111827;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   APP LAYOUT
+========================= */
+
+@media (max-width: 700px) {
+  .app {
+    display: block;
+    width: 90%;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 72px;
+    min-width: 72px;
+    height: 100vh;
+
+    z-index: 1000;
+  }
+
+  .main-area {
+    width: calc(150% - 72px);
+    margin-left: 72px !important;
+    min-width: 0;
+  }
+
+  .main-content {
+    width: 100%;
+    max-width: 100%;
+
+    margin-left: 0 !important;
+    padding: 16px;
+
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .header {
+    width: 100%;
+    margin-left: 0 !important;
+    box-sizing: border-box;
+  }
+}
+
+/* =========================================
+   MAIN APP LAYOUT - DESKTOP
+========================================= */
+
+:root {
+  --sidebar-width: 320px;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Sidebar fixed on desktop */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: var(--sidebar-width);
+  height: 100vh;
+
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* Everything starts AFTER sidebar */
+
+.main-area {
+  width: calc(100% - var(--sidebar-width));
+  min-height: 100vh;
+
+  margin-left: var(--sidebar-width);
+
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+  padding: 32px;
+
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 220px;
+  }
+
+  .main-content {
+    padding: 24px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  :root {
+    --sidebar-width: 72px;
+  }
+
+  .sidebar {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    height: 100vh;
+  }
+
+  .main-area {
+    width: calc(100% - var(--sidebar-width));
+    margin-left: var(--sidebar-width);
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 16px;
+
+    margin: 0;
+
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+}

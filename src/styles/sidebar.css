@@ -1,0 +1,480 @@
+/* ========================================
+   SIDEBAR
+======================================== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 200px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 22px 16px;
+
+  background: #ffffff;
+
+  border-right: 1px solid #e5e7eb;
+
+  z-index: 1000;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.sidebar-logo {
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 0 8px;
+
+  margin-bottom: 30px;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #4f46e5;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.sidebar-logo span {
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: #111827;
+}
+
+
+/* ========================================
+   SIDEBAR SECTION
+======================================== */
+
+.sidebar-section {
+  margin-bottom: 25px;
+}
+
+.sidebar-label {
+  margin: 0 0 9px;
+
+  padding: 0 10px;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+
+  color: #9ca3af;
+}
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+/* ========================================
+   SIDEBAR ITEM
+======================================== */
+
+.sidebar-item {
+  width: 100%;
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 10px 12px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #6b7280;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* Hover */
+
+.sidebar-item:hover {
+  background: #f8fafc;
+
+  color: #374151;
+}
+
+
+/* Active */
+
+.sidebar-item.active {
+  background: #eef2ff;
+
+  color: #4f46e5;
+
+  font-weight: 600;
+}
+
+
+/* ========================================
+   ICON
+======================================== */
+
+.sidebar-icon {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-size: 16px;
+
+  color: inherit;
+}
+
+
+/* ========================================
+   SETTINGS
+======================================== */
+
+.sidebar-section > .sidebar-item {
+  margin-top: 2px;
+}
+
+
+/* ========================================
+   BOTTOM USER AREA
+======================================== */
+
+.sidebar-bottom {
+  margin-top: auto;
+
+  padding-top: 16px;
+
+  border-top: 1px solid #f1f5f9;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* User */
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+}
+
+
+/* Avatar */
+
+.sidebar-avatar {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #eef2ff;
+
+  color: #4f46e5;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* User details */
+
+.sidebar-user div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-user strong {
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: #374151;
+}
+
+.sidebar-user small {
+  margin-top: 3px;
+
+  font-size: 10px;
+
+  color: #9ca3af;
+}
+
+
+/* ========================================
+   LOGOUT
+======================================== */
+
+.logout-button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #9ca3af;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #fef2f2;
+
+  color: #ef4444;
+}
+
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+
+  border-radius: 10px;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+  .sidebar {
+    width: 220px;
+  }
+
+  .main-area {
+    margin-left: 220px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .sidebar {
+    width: 70px;
+
+    padding: 20px 10px;
+  }
+
+  .sidebar-logo {
+    justify-content: center;
+
+    padding: 0;
+
+    margin-bottom: 25px;
+  }
+
+  .sidebar-logo span {
+    display: none;
+  }
+
+  .sidebar-label {
+    display: none;
+  }
+
+  .sidebar-item {
+    justify-content: center;
+
+    padding: 10px;
+  }
+
+  .sidebar-item span:last-child {
+    display: none;
+  }
+
+  .sidebar-icon {
+    width: 25px;
+  }
+
+  .sidebar-user {
+    justify-content: center;
+  }
+
+  .sidebar-user > div:last-child {
+    display: none;
+  }
+
+  .logout-button {
+    display: none;
+  }
+
+  .main-area {
+    margin-left: 70px;
+  }
+
+}
+
+
+
+@media (max-width: 768px) {
+
+  .sidebar .logo-text,
+  .sidebar .nav-text,
+  .sidebar .user-details {
+    display: none;
+  }
+
+  .sidebar .logo,
+  .sidebar .nav-item,
+  .sidebar .user-profile {
+    justify-content: center;
+  }
+
+  .sidebar .nav-item {
+    padding: 12px 0;
+  }
+
+}
+
+
+.sidebar-user {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-user-info strong {
+  display: block;
+}
+
+.sidebar-user-info small {
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    width: 72px;
+    min-width: 72px;
+    padding: 16px 10px;
+  }
+
+  .sidebar-logo span,
+  .sidebar-label,
+  .sidebar-item span:last-child,
+  .sidebar-user-info {
+    display: none;
+  }
+
+  .sidebar-logo {
+    justify-content: center;
+  }
+
+  .sidebar-item {
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .sidebar-icon {
+    margin: 0;
+  }
+
+  .sidebar-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sidebar-user {
+    justify-content: center;
+  }
+
+  .logout-button {
+    width: 100%;
+  }
+}
