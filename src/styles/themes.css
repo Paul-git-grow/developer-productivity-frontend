@@ -1,0 +1,1613 @@
+/* =========================================================
+   DEVELOPER PRODUCTIVITY DASHBOARD
+   COMPLETE LIGHT + DARK THEME
+   ========================================================= */
+
+
+/* =========================================================
+   1. LIGHT THEME VARIABLES
+   ========================================================= */
+
+:root,
+[data-theme="light"] {
+  --page-bg: #f8fafc;
+  --main-bg: #f8fafc;
+
+  --sidebar-bg: #ffffff;
+  --header-bg: #ffffff;
+
+  --card-bg: #ffffff;
+  --card-hover: #f8fafc;
+
+  --input-bg: #ffffff;
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #94a3b8;
+
+  --border-color: #e5e7eb;
+
+  --primary: #5547e8;
+  --primary-hover: #4738d1;
+
+  --progress-bg: #e5e7eb;
+
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================================
+   2. DARK THEME VARIABLES
+   ========================================================= */
+
+[data-theme="dark"] {
+  --page-bg: #0f172a;
+  --main-bg: #0f172a;
+
+  --sidebar-bg: #111827;
+  --header-bg: #111827;
+
+  --card-bg: #1e293b;
+  --card-hover: #263449;
+
+  --input-bg: #172033;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --border-color: #334155;
+
+  --primary: #5b4df5;
+  --primary-hover: #6d5dfc;
+
+  --progress-bg: #334155;
+
+  --shadow: none;
+}
+
+
+/* =========================================================
+   3. GLOBAL
+   ========================================================= */
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+}
+
+body {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   4. APPLICATION
+   ========================================================= */
+
+.app {
+  min-height: 100vh;
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+}
+
+.main-area {
+  min-height: 100vh;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
+}
+
+.main-content {
+  min-height: 100vh;
+  background-color: var(--main-bg) !important;
+  color: var(--text-primary);
+}
+
+
+/* =========================================================
+   5. MAIN PAGES
+   ========================================================= */
+
+.dashboard,
+.dashboard-page,
+.tasks-page,
+.projects-page,
+.calendar-page,
+.analytics-page,
+.settings-page,
+.profile-page {
+  background-color: var(--main-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+
+/* =========================================================
+   6. SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  background-color: var(--sidebar-bg) !important;
+  color: var(--text-primary);
+  border-right: 1px solid var(--border-color) !important;
+}
+
+
+/* =========================================================
+   7. HEADER
+   ========================================================= */
+
+.header {
+  background-color: var(--header-bg) !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.header h1,
+.header h2,
+.header h3,
+.header strong {
+  color: var(--text-primary);
+}
+
+.header p,
+.header span {
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   8. PAGE HEADINGS
+   ========================================================= */
+
+.dashboard h1,
+.dashboard h2,
+.dashboard h3,
+.dashboard h4,
+
+.dashboard-page h1,
+.dashboard-page h2,
+.dashboard-page h3,
+.dashboard-page h4,
+
+.tasks-page h1,
+.tasks-page h2,
+.tasks-page h3,
+.tasks-page h4,
+
+.projects-page h1,
+.projects-page h2,
+.projects-page h3,
+.projects-page h4,
+
+.calendar-page h1,
+.calendar-page h2,
+.calendar-page h3,
+.calendar-page h4,
+
+.analytics-page h1,
+.analytics-page h2,
+.analytics-page h3,
+.analytics-page h4,
+
+.settings-page h1,
+.settings-page h2,
+.settings-page h3,
+.settings-page h4,
+
+.profile-page h1,
+.profile-page h2,
+.profile-page h3,
+.profile-page h4 {
+  color: var(--text-primary) !important;
+}
+
+
+/* =========================================================
+   9. DARK MODE - IMPORTANT HEADINGS WHITE
+   ========================================================= */
+
+[data-theme="dark"] .dashboard h1,
+[data-theme="dark"] .dashboard h2,
+[data-theme="dark"] .dashboard h3,
+[data-theme="dark"] .dashboard h4,
+
+[data-theme="dark"] .dashboard-page h1,
+[data-theme="dark"] .dashboard-page h2,
+[data-theme="dark"] .dashboard-page h3,
+
+[data-theme="dark"] .welcome-section h1,
+[data-theme="dark"] .welcome-section h2,
+[data-theme="dark"] .welcome-section h3,
+
+[data-theme="dark"] .tasks-card h1,
+[data-theme="dark"] .tasks-card h2,
+[data-theme="dark"] .tasks-card h3,
+
+[data-theme="dark"] .productivity-card h1,
+[data-theme="dark"] .productivity-card h2,
+[data-theme="dark"] .productivity-card h3,
+
+[data-theme="dark"] .quick-actions-card h1,
+[data-theme="dark"] .quick-actions-card h2,
+[data-theme="dark"] .quick-actions-card h3,
+
+[data-theme="dark"] .focus-card h1,
+[data-theme="dark"] .focus-card h2,
+[data-theme="dark"] .focus-card h3 {
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   10. BODY TEXT
+   ========================================================= */
+
+.dashboard p,
+.dashboard-page p,
+.tasks-page p,
+.projects-page p,
+.calendar-page p,
+.analytics-page p,
+.settings-page p,
+.profile-page p {
+  color: var(--text-secondary) !important;
+}
+
+.dashboard strong,
+.dashboard-page strong,
+.tasks-page strong,
+.projects-page strong,
+.calendar-page strong,
+.analytics-page strong,
+.settings-page strong,
+.profile-page strong {
+  color: var(--text-primary) !important;
+}
+
+
+/* =========================================================
+   11. DASHBOARD WELCOME
+   ========================================================= */
+
+.welcome-section {
+  color: var(--text-primary);
+}
+
+.welcome-section h1,
+.welcome-section h2,
+.welcome-section h3 {
+  color: var(--text-primary) !important;
+}
+
+.welcome-section p {
+  color: var(--text-secondary) !important;
+}
+
+
+/* =========================================================
+   12. COMMON CARDS
+   ========================================================= */
+
+.stat-card,
+.tasks-card,
+.task-card,
+.project-card,
+.analytics-card,
+.settings-card,
+.profile-card,
+.focus-card,
+.productivity-card,
+.quick-actions-card,
+.calendar-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   13. STAT CARDS
+   ========================================================= */
+
+.stat-card h2,
+.stat-card h3,
+.stat-card h4,
+.stat-card strong,
+.stat-card .stat-value {
+  color: var(--text-primary) !important;
+}
+
+.stat-card p,
+.stat-card span {
+  color: var(--text-secondary) !important;
+}
+
+
+/* =========================================================
+   14. TODAY'S TASKS
+   ========================================================= */
+
+.tasks-card {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.tasks-card h1,
+.tasks-card h2,
+.tasks-card h3,
+.tasks-card h4 {
+  color: var(--text-primary) !important;
+}
+
+.tasks-card p,
+.tasks-card span {
+  color: var(--text-secondary);
+}
+
+.task-item {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+
+/* =========================================================
+   15. WEEKLY PRODUCTIVITY
+   ========================================================= */
+
+.productivity-card {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.productivity-card h1,
+.productivity-card h2,
+.productivity-card h3,
+.productivity-card h4 {
+  color: var(--text-primary) !important;
+}
+
+.productivity-card p {
+  color: var(--text-secondary) !important;
+}
+
+
+/* =========================================================
+   16. QUICK ACTIONS
+   ========================================================= */
+
+.quick-actions-card {
+  background-color: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.quick-actions-card h1,
+.quick-actions-card h2,
+.quick-actions-card h3,
+.quick-actions-card h4 {
+  color: var(--text-primary) !important;
+}
+
+.quick-actions-card p {
+  color: var(--text-secondary) !important;
+}
+
+.quick-action,
+.quick-action-btn,
+.action-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.quick-action:hover,
+.quick-action-btn:hover,
+.action-card:hover {
+  background-color: var(--card-hover) !important;
+}
+
+
+/* =========================================================
+   17. FOCUS TIMER
+   ========================================================= */
+
+.focus-card,
+.focus-timer {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.focus-card h1,
+.focus-card h2,
+.focus-card h3,
+.focus-timer h1,
+.focus-timer h2,
+.focus-timer h3 {
+  color: var(--text-primary) !important;
+}
+
+.focus-card p,
+.focus-timer p {
+  color: var(--text-secondary) !important;
+}
+
+.timer-display {
+  color: var(--text-primary) !important;
+}
+
+
+/* =========================================================
+   18. PROJECTS
+   ========================================================= */
+
+.project-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.project-card h1,
+.project-card h2,
+.project-card h3,
+.project-card h4,
+.project-card strong {
+  color: var(--text-primary) !important;
+}
+
+.project-card p,
+.project-card span {
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   19. ANALYTICS
+   ========================================================= */
+
+.analytics-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.analytics-card h1,
+.analytics-card h2,
+.analytics-card h3,
+.analytics-card h4,
+.analytics-card strong {
+  color: var(--text-primary) !important;
+}
+
+.analytics-card p {
+  color: var(--text-secondary) !important;
+}
+
+
+/* =========================================================
+   20. SETTINGS
+   ========================================================= */
+
+.settings-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.settings-card h1,
+.settings-card h2,
+.settings-card h3,
+.settings-card h4,
+.settings-card strong,
+.settings-card label {
+  color: var(--text-primary) !important;
+}
+
+.settings-card p {
+  color: var(--text-secondary) !important;
+}
+
+
+/* =========================================================
+   21. PROFILE
+   ========================================================= */
+
+.profile-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.profile-card h1,
+.profile-card h2,
+.profile-card h3,
+.profile-card h4,
+.profile-card strong {
+  color: var(--text-primary) !important;
+}
+
+.profile-card p {
+  color: var(--text-secondary) !important;
+}
+
+
+/* =========================================================
+   22. CALENDAR
+   ========================================================= */
+
+.calendar-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+.calendar-day {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.calendar-day:hover {
+  background-color: var(--card-hover);
+}
+
+
+/* =========================================================
+   23. INPUTS / SEARCH / SELECT
+   ========================================================= */
+
+input,
+textarea,
+select {
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: var(--input-bg) !important;
+  color: #ffffff !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   24. PRIMARY BUTTONS
+   ========================================================= */
+
+.primary-btn,
+.add-task-btn,
+.save-settings-btn {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.primary-btn:hover,
+.add-task-btn:hover,
+.save-settings-btn:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+
+/* =========================================================
+   25. PROGRESS BARS
+   ========================================================= */
+
+.task-progress,
+.progress-track,
+.progress-bar-background {
+  background-color: var(--progress-bg) !important;
+}
+
+
+/* =========================================================
+   26. DARK MODE - PAGE TEXT
+   ========================================================= */
+
+[data-theme="dark"] .dashboard,
+[data-theme="dark"] .dashboard-page,
+[data-theme="dark"] .tasks-page,
+[data-theme="dark"] .projects-page,
+[data-theme="dark"] .calendar-page,
+[data-theme="dark"] .analytics-page,
+[data-theme="dark"] .settings-page,
+[data-theme="dark"] .profile-page {
+  color: #ffffff !important;
+}
+
+
+/* Main headings = pure white */
+
+[data-theme="dark"] .dashboard h1,
+[data-theme="dark"] .dashboard h2,
+[data-theme="dark"] .dashboard h3,
+
+[data-theme="dark"] .tasks-page h1,
+[data-theme="dark"] .tasks-page h2,
+[data-theme="dark"] .tasks-page h3,
+
+[data-theme="dark"] .projects-page h1,
+[data-theme="dark"] .projects-page h2,
+[data-theme="dark"] .projects-page h3,
+
+[data-theme="dark"] .calendar-page h1,
+[data-theme="dark"] .calendar-page h2,
+[data-theme="dark"] .calendar-page h3,
+
+[data-theme="dark"] .analytics-page h1,
+[data-theme="dark"] .analytics-page h2,
+[data-theme="dark"] .analytics-page h3,
+
+[data-theme="dark"] .settings-page h1,
+[data-theme="dark"] .settings-page h2,
+[data-theme="dark"] .settings-page h3,
+
+[data-theme="dark"] .profile-page h1,
+[data-theme="dark"] .profile-page h2,
+[data-theme="dark"] .profile-page h3 {
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   27. DARK MODE - SPECIFIC DASHBOARD TITLES
+   ========================================================= */
+
+[data-theme="dark"] .welcome-section h1,
+[data-theme="dark"] .welcome-section h2,
+[data-theme="dark"] .welcome-section h3,
+
+[data-theme="dark"] .tasks-card h1,
+[data-theme="dark"] .tasks-card h2,
+[data-theme="dark"] .tasks-card h3,
+
+[data-theme="dark"] .productivity-card h1,
+[data-theme="dark"] .productivity-card h2,
+[data-theme="dark"] .productivity-card h3,
+
+[data-theme="dark"] .quick-actions-card h1,
+[data-theme="dark"] .quick-actions-card h2,
+[data-theme="dark"] .quick-actions-card h3,
+
+[data-theme="dark"] .focus-card h1,
+[data-theme="dark"] .focus-card h2,
+[data-theme="dark"] .focus-card h3 {
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   28. DARK MODE - IMPORTANT CARD TEXT
+   ========================================================= */
+
+[data-theme="dark"] .stat-card strong,
+[data-theme="dark"] .stat-card h3,
+
+[data-theme="dark"] .task-item strong,
+
+[data-theme="dark"] .project-card strong,
+[data-theme="dark"] .project-card h3,
+
+[data-theme="dark"] .analytics-card strong,
+[data-theme="dark"] .analytics-card h3,
+
+[data-theme="dark"] .settings-card strong,
+[data-theme="dark"] .settings-card h3,
+
+[data-theme="dark"] .profile-card strong,
+[data-theme="dark"] .profile-card h3 {
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   29. DARK MODE SECONDARY TEXT
+   ========================================================= */
+
+[data-theme="dark"] .dashboard p,
+[data-theme="dark"] .dashboard-page p,
+[data-theme="dark"] .tasks-page p,
+[data-theme="dark"] .projects-page p,
+[data-theme="dark"] .calendar-page p,
+[data-theme="dark"] .analytics-page p,
+[data-theme="dark"] .settings-page p,
+[data-theme="dark"] .profile-page p {
+  color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   30. THEME APPEARANCE BUTTONS
+   ========================================================= */
+
+.appearance-option {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.appearance-option:hover {
+  background-color: var(--card-hover);
+}
+
+.appearance-option.selected {
+  border-color: var(--primary) !important;
+}
+
+[data-theme="dark"] .appearance-option {
+  background-color: #172033 !important;
+  color: #ffffff !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .appearance-option.selected {
+  border-color: #5b4df5 !important;
+}
+
+
+/* =========================================================
+   31. SMOOTH THEME TRANSITION
+   ========================================================= */
+
+body,
+.app,
+.main-area,
+.main-content,
+.header,
+.sidebar,
+.dashboard,
+.dashboard-page,
+.tasks-page,
+.projects-page,
+.calendar-page,
+.analytics-page,
+.settings-page,
+.profile-page,
+.stat-card,
+.tasks-card,
+.task-card,
+.project-card,
+.analytics-card,
+.settings-card,
+.profile-card,
+.focus-card,
+.productivity-card,
+.quick-actions-card {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* =========================================
+   DARK THEME - SEARCH BAR FIX
+========================================= */
+
+[data-theme="dark"] .search-box,
+[data-theme="dark"] .search-container,
+[data-theme="dark"] .header-search {
+  background: #172033 !important;
+  border: 1px solid #334155 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .search-box input,
+[data-theme="dark"] .search-container input,
+[data-theme="dark"] .header-search input {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .search-box input::placeholder,
+[data-theme="dark"] .search-container input::placeholder,
+[data-theme="dark"] .header-search input::placeholder {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .search-shortcut,
+[data-theme="dark"] .shortcut-key {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border: 1px solid #334155 !important;
+}
+
+
+/* =========================================
+   DARK THEME - FOCUS TIMER FIX
+========================================= */
+/* Focus Timer மட்டும் - Dark Theme */
+
+[data-theme="dark"] .dashboard-main-grid > :nth-child(2) {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .dashboard-main-grid > :nth-child(2) h1,
+[data-theme="dark"] .dashboard-main-grid > :nth-child(2) h2,
+[data-theme="dark"] .dashboard-main-grid > :nth-child(2) h3,
+[data-theme="dark"] .dashboard-main-grid > :nth-child(2) strong {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .dashboard-main-grid > :nth-child(2) p {
+  color: #cbd5e1 !important;
+}
+
+
+/* =====================================================
+   DARK THEME - WHITE CARDS FIX
+   Projects + Tasks + Calendar + Analytics
+   ===================================================== */
+
+
+/* ---------- PROJECTS ---------- */
+
+[data-theme="dark"] .projects-page,
+[data-theme="dark"] .projects-container {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* Project cards + empty project box */
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .projects-grid,
+[data-theme="dark"] .projects-list,
+[data-theme="dark"] .empty-state {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .projects-page h1,
+[data-theme="dark"] .projects-page h2,
+[data-theme="dark"] .projects-page h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .projects-page p {
+  color: #cbd5e1 !important;
+}
+
+
+/* ---------- TASKS ---------- */
+
+[data-theme="dark"] .tasks-page {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+/* Add Task white container */
+[data-theme="dark"] .task-form,
+[data-theme="dark"] .add-task-form,
+[data-theme="dark"] .task-form-container {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #334155 !important;
+}
+
+/* My Tasks white box */
+[data-theme="dark"] .task-list,
+[data-theme="dark"] .tasks-list,
+[data-theme="dark"] .tasks-container,
+[data-theme="dark"] .task-card {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .tasks-page h1,
+[data-theme="dark"] .tasks-page h2,
+[data-theme="dark"] .tasks-page h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .tasks-page p {
+  color: #cbd5e1 !important;
+}
+
+
+/* ---------- TASK INPUTS ---------- */
+
+[data-theme="dark"] .tasks-page input,
+[data-theme="dark"] .tasks-page textarea,
+[data-theme="dark"] .tasks-page select {
+  background: #172033 !important;
+  color: #ffffff !important;
+
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .tasks-page input::placeholder,
+[data-theme="dark"] .tasks-page textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .tasks-page option {
+  background: #172033;
+  color: #ffffff;
+}
+
+
+/* ---------- PROJECT INPUTS ---------- */
+
+[data-theme="dark"] .projects-page input,
+[data-theme="dark"] .projects-page textarea,
+[data-theme="dark"] .projects-page select {
+  background: #172033 !important;
+  color: #ffffff !important;
+
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .projects-page input::placeholder,
+[data-theme="dark"] .projects-page textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .projects-page option {
+  background: #172033;
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   CALENDAR
+   ===================================================== */
+
+[data-theme="dark"] .calendar-page {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+
+/* Main calendar */
+[data-theme="dark"] .calendar-container,
+[data-theme="dark"] .calendar-card {
+  background: #1e293b !important;
+  color: #ffffff !important;
+
+  border-color: #334155 !important;
+}
+
+
+/* Individual dates */
+[data-theme="dark"] .calendar-day {
+  background: #1e293b !important;
+  color: #ffffff !important;
+
+  border-color: #334155 !important;
+}
+
+
+/* Calendar selected date */
+
+[data-theme="dark"] .calendar-day.selected {
+  background: #eef2ff !important;
+  color: #4f46e5 !important;
+}
+
+
+/* Calendar right white panel */
+
+[data-theme="dark"] .selected-date,
+[data-theme="dark"] .selected-date-panel,
+[data-theme="dark"] .schedule-panel,
+[data-theme="dark"] .calendar-details {
+  background: #1e293b !important;
+
+  color: #ffffff !important;
+
+  border-color: #334155 !important;
+}
+
+
+[data-theme="dark"] .selected-date h1,
+[data-theme="dark"] .selected-date h2,
+[data-theme="dark"] .selected-date h3,
+[data-theme="dark"] .selected-date-panel h1,
+[data-theme="dark"] .selected-date-panel h2,
+[data-theme="dark"] .selected-date-panel h3 {
+  color: #ffffff !important;
+}
+
+
+[data-theme="dark"] .selected-date p,
+[data-theme="dark"] .selected-date-panel p,
+[data-theme="dark"] .schedule-panel p {
+  color: #cbd5e1 !important;
+}
+
+
+/* Calendar navigation buttons */
+
+[data-theme="dark"] .calendar-page button {
+  border-color: #334155;
+}
+
+
+/* =====================================================
+   ANALYTICS
+   ===================================================== */
+
+[data-theme="dark"] .analytics-page {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+
+/* Top four white cards */
+
+[data-theme="dark"] .analytics-stat-card,
+[data-theme="dark"] .analytics-stats .stat-card {
+  background: #1e293b !important;
+
+  color: #ffffff !important;
+
+  border: 1px solid #334155 !important;
+}
+
+
+/* Analytics general cards */
+
+[data-theme="dark"] .analytics-card {
+  background: #1e293b !important;
+
+  color: #ffffff !important;
+
+  border: 1px solid #334155 !important;
+}
+
+
+/* Analytics titles */
+
+[data-theme="dark"] .analytics-page h1,
+[data-theme="dark"] .analytics-page h2,
+[data-theme="dark"] .analytics-page h3,
+[data-theme="dark"] .analytics-page h4 {
+  color: #ffffff !important;
+}
+
+
+/* Analytics normal text */
+
+[data-theme="dark"] .analytics-page p,
+[data-theme="dark"] .analytics-page span {
+  color: #cbd5e1;
+}
+
+
+/* Weekly Performance / chart */
+
+[data-theme="dark"] .analytics-chart,
+[data-theme="dark"] .weekly-performance,
+[data-theme="dark"] .chart-container {
+  background: #1e293b !important;
+  color: #ffffff !important;
+}
+
+
+/* Chart bars background */
+
+[data-theme="dark"] .analytics-bar {
+  background: #6366f1 !important;
+}
+
+
+/* Task distribution */
+
+[data-theme="dark"] .task-distribution {
+  background: #1e293b !important;
+
+  color: #ffffff !important;
+
+  border-color: #334155 !important;
+}
+
+
+/* Progress background */
+
+[data-theme="dark"] .progress-bar,
+[data-theme="dark"] .distribution-bar {
+  background: #334155 !important;
+}
+
+
+/* Analytics bottom insight */
+
+[data-theme="dark"] .insight-card,
+[data-theme="dark"] .analytics-insight {
+  background: #1e293b !important;
+
+  color: #ffffff !important;
+
+  border: 1px solid #334155 !important;
+}
+
+
+/* Analytics dropdown */
+
+[data-theme="dark"] .analytics-filter {
+  background: #172033 !important;
+
+  color: #ffffff !important;
+
+  border: 1px solid #334155 !important;
+}
+
+
+/* =====================================================
+   EMPTY STATES
+   ===================================================== */
+
+[data-theme="dark"] .empty-state,
+[data-theme="dark"] .no-tasks,
+[data-theme="dark"] .no-projects {
+  background: #1e293b !important;
+
+  color: #cbd5e1 !important;
+
+  border-color: #334155 !important;
+}
+
+
+/* =====================================================
+   COMMON WHITE BACKGROUND FIX
+   ===================================================== */
+
+[data-theme="dark"] .card {
+  background: #1e293b !important;
+
+  color: #ffffff !important;
+
+  border-color: #334155 !important;
+}
+
+
+/* Secondary text */
+
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .description,
+[data-theme="dark"] .secondary-text {
+  color: #94a3b8 !important;
+}
+
+/* =========================================================
+   FINAL DARK THEME FIX
+   Projects + Tasks + Calendar + Analytics white sections
+   ========================================================= */
+
+
+/* ---------------- PROJECTS ---------------- */
+
+[data-theme="dark"] .projects-page .empty-state,
+[data-theme="dark"] .projects-page .projects-empty,
+[data-theme="dark"] .projects-page .empty-projects,
+[data-theme="dark"] .projects-page .project-list,
+[data-theme="dark"] .projects-page .projects-list {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .projects-page .empty-state p,
+[data-theme="dark"] .projects-page .projects-empty p,
+[data-theme="dark"] .projects-page .empty-projects p {
+  color: #94a3b8 !important;
+}
+
+
+/* ---------------- TASKS ---------------- */
+
+[data-theme="dark"] .tasks-page .task-form,
+[data-theme="dark"] .tasks-page .task-form-container,
+[data-theme="dark"] .tasks-page .add-task-form,
+[data-theme="dark"] .tasks-page .add-task-card {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .tasks-page .task-list,
+[data-theme="dark"] .tasks-page .tasks-list,
+[data-theme="dark"] .tasks-page .task-container,
+[data-theme="dark"] .tasks-page .tasks-container,
+[data-theme="dark"] .tasks-page .empty-state,
+[data-theme="dark"] .tasks-page .no-tasks {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .tasks-page .empty-state p,
+[data-theme="dark"] .tasks-page .no-tasks,
+[data-theme="dark"] .tasks-page .no-tasks p {
+  color: #94a3b8 !important;
+}
+
+
+/* Task form inputs */
+
+[data-theme="dark"] .tasks-page input,
+[data-theme="dark"] .tasks-page textarea,
+[data-theme="dark"] .tasks-page select {
+  background: #172033 !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .tasks-page input::placeholder,
+[data-theme="dark"] .tasks-page textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+
+/* ---------------- CALENDAR ---------------- */
+
+[data-theme="dark"] .calendar-page .calendar-container,
+[data-theme="dark"] .calendar-page .calendar-card,
+[data-theme="dark"] .calendar-page .calendar-main {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+
+/* right side selected date white box */
+
+[data-theme="dark"] .calendar-page .selected-date-panel,
+[data-theme="dark"] .calendar-page .selected-date,
+[data-theme="dark"] .calendar-page .schedule-panel,
+[data-theme="dark"] .calendar-page .calendar-details,
+[data-theme="dark"] .calendar-page .selected-day-panel {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .calendar-page .selected-date-panel h1,
+[data-theme="dark"] .calendar-page .selected-date-panel h2,
+[data-theme="dark"] .calendar-page .selected-date-panel h3,
+[data-theme="dark"] .calendar-page .selected-date h1,
+[data-theme="dark"] .calendar-page .selected-date h2,
+[data-theme="dark"] .calendar-page .selected-date h3 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .calendar-page .selected-date-panel p,
+[data-theme="dark"] .calendar-page .selected-date p,
+[data-theme="dark"] .calendar-page .schedule-panel p {
+  color: #94a3b8 !important;
+}
+
+
+/* calendar days */
+
+[data-theme="dark"] .calendar-page .calendar-day {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+[data-theme="dark"] .calendar-page .calendar-day:hover {
+  background: #273449 !important;
+}
+
+
+/* keep selected day highlighted */
+
+[data-theme="dark"] .calendar-page .calendar-day.selected {
+  background: #eef2ff !important;
+  color: #4f46e5 !important;
+}
+
+
+/* ---------------- ANALYTICS ---------------- */
+
+[data-theme="dark"] .analytics-page .analytics-stat-card,
+[data-theme="dark"] .analytics-page .stat-card {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+
+/* weekly chart main white card */
+
+[data-theme="dark"] .analytics-page .analytics-card,
+[data-theme="dark"] .analytics-page .weekly-performance,
+[data-theme="dark"] .analytics-page .chart-card,
+[data-theme="dark"] .analytics-page .chart-container {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+
+/* task status right white box */
+
+[data-theme="dark"] .analytics-page .task-distribution,
+[data-theme="dark"] .analytics-page .distribution-card,
+[data-theme="dark"] .analytics-page .status-card,
+[data-theme="dark"] .analytics-page .task-status-card {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+
+/* analytics text */
+
+[data-theme="dark"] .analytics-page h1,
+[data-theme="dark"] .analytics-page h2,
+[data-theme="dark"] .analytics-page h3,
+[data-theme="dark"] .analytics-page h4 {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .analytics-page p,
+[data-theme="dark"] .analytics-page span,
+[data-theme="dark"] .analytics-page small {
+  color: #cbd5e1 !important;
+}
+
+
+/* progress track */
+
+[data-theme="dark"] .analytics-page .progress-bar,
+[data-theme="dark"] .analytics-page .distribution-bar,
+[data-theme="dark"] .analytics-page .progress-track {
+  background: #334155 !important;
+}
+
+
+/* chart area */
+
+[data-theme="dark"] .analytics-page .bar-chart,
+[data-theme="dark"] .analytics-page .analytics-chart {
+  background: #1e293b !important;
+}
+
+
+/* individual chart columns */
+
+[data-theme="dark"] .analytics-page .bar,
+[data-theme="dark"] .analytics-page .analytics-bar {
+  background: #6366f1 !important;
+}
+
+
+/* productivity summary */
+
+[data-theme="dark"] .analytics-page .insight-card,
+[data-theme="dark"] .analytics-page .analytics-insight,
+[data-theme="dark"] .analytics-page .productivity-summary {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+
+/* ---------------- FORCE WHITE CHILD DIVS ---------------- */
+
+/*
+   This specifically catches the large white panels shown
+   in Projects / Tasks / Calendar / Analytics.
+*/
+
+[data-theme="dark"] .projects-page > div,
+[data-theme="dark"] .tasks-page > div,
+[data-theme="dark"] .calendar-page > div,
+[data-theme="dark"] .analytics-page > div {
+  color: #ffffff;
+}
+
+
+/* Common cards */
+
+[data-theme="dark"] .projects-page .card,
+[data-theme="dark"] .tasks-page .card,
+[data-theme="dark"] .calendar-page .card,
+[data-theme="dark"] .analytics-page .card {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #334155 !important;
+}
+
+
+/* ======================================================
+   FORCE DARK - Tasks / Calendar / Analytics
+   ====================================================== */
+
+/* ---------- TASKS ---------- */
+
+[data-theme="dark"] .tasks-page .empty-state,
+[data-theme="dark"] .tasks-page .task-empty,
+[data-theme="dark"] .tasks-page .no-tasks,
+[data-theme="dark"] .tasks-page .task-list,
+[data-theme="dark"] .tasks-page .task-container,
+[data-theme="dark"] .tasks-page .tasks-container{
+    background:#1e293b !important;
+    color:#fff !important;
+    border:1px solid #334155 !important;
+}
+
+[data-theme="dark"] .tasks-page .empty-state *,
+[data-theme="dark"] .tasks-page .task-empty *,
+[data-theme="dark"] .tasks-page .no-tasks *{
+    color:#cbd5e1 !important;
+}
+
+
+/* ---------- CALENDAR ---------- */
+
+[data-theme="dark"] .calendar-page .selected-date,
+[data-theme="dark"] .calendar-page .selected-date-panel,
+[data-theme="dark"] .calendar-page .schedule-panel,
+[data-theme="dark"] .calendar-page .calendar-details{
+    background:#1e293b !important;
+    color:#fff !important;
+    border:1px solid #334155 !important;
+}
+
+[data-theme="dark"] .calendar-page .selected-date *,
+[data-theme="dark"] .calendar-page .selected-date-panel *,
+[data-theme="dark"] .calendar-page .schedule-panel *{
+    color:#cbd5e1 !important;
+}
+
+
+/* ---------- ANALYTICS ---------- */
+
+[data-theme="dark"] .analytics-page .analytics-chart,
+[data-theme="dark"] .analytics-page .chart-container,
+[data-theme="dark"] .analytics-page .task-status,
+[data-theme="dark"] .analytics-page .task-distribution,
+[data-theme="dark"] .analytics-page .analytics-summary{
+    background:#1e293b !important;
+    color:#fff !important;
+    border:1px solid #334155 !important;
+}
+
+[data-theme="dark"] .analytics-page .analytics-chart *,
+[data-theme="dark"] .analytics-page .task-status *,
+[data-theme="dark"] .analytics-page .task-distribution *,
+[data-theme="dark"] .analytics-page .analytics-summary *{
+    color:#cbd5e1 !important;
+}
+
+
+/* ---------- LAST RESORT ---------- */
+/* White box irundha idhu force dark pannum */
+
+[data-theme="dark"] .tasks-page > div,
+[data-theme="dark"] .calendar-page > div,
+[data-theme="dark"] .analytics-page > div{
+    background:#1e293b !important;
+    color:#fff !important;
+    border-color:#334155 !important;
+}
+
+/* ===========================
+   FORCE DARK - WHITE BOX FIX
+   =========================== */
+
+[data-theme="dark"] .projects-page,
+[data-theme="dark"] .tasks-page,
+[data-theme="dark"] .calendar-page,
+[data-theme="dark"] .analytics-page{
+  background:#0f172a !important;
+  color:#fff !important;
+}
+
+/* ALL WHITE CONTAINERS */
+[data-theme="dark"] .projects-page > div,
+[data-theme="dark"] .tasks-page > div,
+[data-theme="dark"] .calendar-page > div,
+[data-theme="dark"] .analytics-page > div,
+
+[data-theme="dark"] .projects-page .empty-state,
+[data-theme="dark"] .tasks-page .empty-state,
+[data-theme="dark"] .calendar-page .selected-date,
+[data-theme="dark"] .analytics-page .analytics-card,
+
+[data-theme="dark"] [class*="empty"],
+[data-theme="dark"] [class*="panel"],
+[data-theme="dark"] [class*="container"],
+[data-theme="dark"] [class*="card"],
+[data-theme="dark"] [class*="list"]{
+  background:#1e293b !important;
+  color:#fff !important;
+  border:1px solid #334155 !important;
+}
+
+/* Inputs */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select{
+  background:#172033 !important;
+  color:#fff !important;
+  border:1px solid #334155 !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder{
+  color:#94a3b8 !important;
+}
+
+/* Analytics white chart */
+[data-theme="dark"] .analytics-page svg{
+  background:#1e293b !important;
+}
+
+[data-theme="dark"] .analytics-page .recharts-surface{
+  background:#1e293b !important;
+}
+
+/* Calendar right box */
+[data-theme="dark"] .calendar-page .selected-date,
+[data-theme="dark"] .calendar-page .schedule-panel{
+  background:#1e293b !important;
+  color:#fff !important;
+}
+
+/* Empty text */
+[data-theme="dark"] .empty-state p,
+[data-theme="dark"] .no-tasks,
+[data-theme="dark"] .no-projects{
+  color:#cbd5e1 !important;
+}
+
+
+/* SYSTEM THEME - SIDEBAR ONLY DARK */
+
+[data-theme="system"] .sidebar {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-right: 1px solid #334155 !important;
+}
+
+[data-theme="system"] .sidebar .sidebar-item {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="system"] .sidebar .sidebar-item:hover {
+  background: #1e293b !important;
+  color: #ffffff !important;
+}
+
+[data-theme="system"] .sidebar .sidebar-item.active {
+  background: #eef2ff !important;
+  color: #4f46e5 !important;
+}
+
+[data-theme="system"] .sidebar .menu-label,
+[data-theme="system"] .sidebar .section-title,
+[data-theme="system"] .sidebar .user-name,
+[data-theme="system"] .sidebar .user-role {
+  color: #94a3b8 !important;
+}

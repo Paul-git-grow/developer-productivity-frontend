@@ -121,17 +121,12 @@ function Settings() {
 
   if (theme === "Dark") {
     document.documentElement.setAttribute("data-theme", "dark");
-  } else if (theme === "Light") {
+  } 
+  else if (theme === "Light") {
     document.documentElement.setAttribute("data-theme", "light");
-  } else {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-
-    document.documentElement.setAttribute(
-      "data-theme",
-      prefersDark ? "dark" : "light"
-    );
+  } 
+  else {
+    document.documentElement.setAttribute("data-theme", "system");
   }
 
   setSaved(false);
