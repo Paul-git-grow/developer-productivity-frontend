@@ -5,6 +5,7 @@ import "../styles/analytics-page.css";
 function Analytics() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [focusSeconds, setFocusSeconds] = useState(0);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -23,6 +24,40 @@ function Analytics() {
 
     fetchTasks();
   }, []);
+
+
+  useEffect(() => {
+  const updateFocusTime = () => {
+    const savedFocusSeconds = Number(
+      localStorage.getItem("totalFocusSeconds") || 0
+    );
+
+    setFocusSeconds(savedFocusSeconds);
+  };
+
+  updateFocusTime();
+
+  const interval = setInterval(updateFocusTime, 1000);
+
+  return () => clearInterval(interval);
+}, []);
+
+
+const focusHours = Math.floor(focusSeconds / 3600);
+
+const focusMinutes = Math.floor(
+  (focusSeconds % 3600) / 60
+);
+
+const focusRemainingSeconds = focusSeconds % 60;
+
+const formattedFocusTime =
+  focusHours > 0
+    ? `${focusHours}h ${focusMinutes}m`
+    : focusMinutes > 0
+    ? `${focusMinutes}m ${focusRemainingSeconds}s`
+    : `${focusRemainingSeconds}s`;
+
 
   // =========================
   // BASIC STATISTICS
@@ -198,18 +233,20 @@ function Analytics() {
 
         <div className="analytics-stat-card">
 
-          <div className="analytics-stat-top">
-            <span>Focus Hours</span>
-            <span className="analytics-icon">⏱</span>
-          </div>
+  <div className="analytics-stat-top">
+    <span>Focus Time</span>
+    <span className="analytics-icon">⏱</span>
+  </div>
 
-          <h2>0h</h2>
+  <h2>{formattedFocusTime}</h2>
 
-          <p>
-            Focus tracking not recorded yet
-          </p>
+  <p>
+    {focusSeconds > 0
+      ? "Total focused time"
+      : "Start Focus Timer to track time"}
+  </p>
 
-        </div>
+</div>
 
 
         <div className="analytics-stat-card">
