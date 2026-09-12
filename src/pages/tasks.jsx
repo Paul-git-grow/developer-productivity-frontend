@@ -3,20 +3,32 @@ import API from "../services/api";
 import "../styles/tasks-page.css";
 
 function Tasks() {
-  // Tasks
+  // =========================
+  // TASK DATA
+  // =========================
+
   const [tasks, setTasks] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Add / Edit Form
+  // =========================
+  // ADD / EDIT FORM
+  // =========================
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("Pending");
   const [priority, setPriority] = useState("Medium");
+  const [dueDate, setDueDate] = useState("");
+  const [project, setProject] = useState("");
 
   const [message, setMessage] = useState("");
   const [editingId, setEditingId] = useState(null);
 
-  // Search + Filter
+  // =========================
+  // SEARCH + FILTER
+  // =========================
+
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [priorityFilter, setPriorityFilter] = useState("All");
@@ -30,14 +42,46 @@ function Tasks() {
       const response = await API.get("/tasks");
       setTasks(response.data);
     } catch (error) {
-      console.log("Fetch Tasks Error:", error);
-    } finally {
-      setLoading(false);
+      console.log(
+        "Fetch Tasks Error:",
+        error.response?.data || error.message
+      );
     }
   };
 
+  // =========================
+  // GET PROJECTS
+  // =========================
+
+  const fetchProjects = async () => {
+    try {
+      const response = await API.get("/projects");
+      setProjects(response.data);
+    } catch (error) {
+      console.log(
+        "Fetch Projects Error:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
+  // =========================
+  // LOAD DATA
+  // =========================
+
   useEffect(() => {
-    fetchTasks();
+    const loadData = async () => {
+      setLoading(true);
+
+      await Promise.all([
+        fetchTasks(),
+        fetchProjects(),
+      ]);
+
+      setLoading(false);
+    };
+
+    loadData();
   }, []);
 
   // =========================
@@ -49,6 +93,8 @@ function Tasks() {
     setDescription("");
     setStatus("Pending");
     setPriority("Medium");
+    setDueDate("");
+    setProject("");
     setEditingId(null);
   };
 
@@ -65,24 +111,29 @@ function Tasks() {
     }
 
     try {
+      const taskData = {
+        title,
+        description,
+        status,
+        priority,
+        dueDate: dueDate || null,
+        project: project || null,
+      };
+
       if (editingId) {
         // UPDATE TASK
-        await API.put(`/tasks/${editingId}`, {
-          title,
-          description,
-          status,
-          priority,
-        });
+        await API.put(
+          `/tasks/${editingId}`,
+          taskData
+        );
 
         setMessage("Task updated successfully");
       } else {
         // CREATE TASK
-        await API.post("/tasks", {
-          title,
-          description,
-          status,
-          priority,
-        });
+        await API.post(
+          "/tasks",
+          taskData
+        );
 
         setMessage("Task added successfully");
       }
@@ -90,8 +141,12 @@ function Tasks() {
       resetForm();
 
       await fetchTasks();
+
     } catch (error) {
-      console.log("Task Save Error:", error);
+      console.log(
+        "Task Save Error:",
+        error.response?.data || error.message
+      );
 
       setMessage(
         error.response?.data?.message ||
@@ -111,6 +166,20 @@ function Tasks() {
     setDescription(task.description || "");
     setStatus(task.status);
     setPriority(task.priority);
+
+    setProject(
+      task.project?._id ||
+      task.project ||
+      ""
+    );
+
+    setDueDate(
+      task.dueDate
+        ? new Date(task.dueDate)
+            .toISOString()
+            .split("T")[0]
+        : ""
+    );
 
     setMessage("");
 
@@ -134,15 +203,21 @@ function Tasks() {
     try {
       await API.delete(`/tasks/${id}`);
 
-      setMessage("Task deleted successfully");
+      setMessage(
+        "Task deleted successfully"
+      );
 
       if (editingId === id) {
         resetForm();
       }
 
       await fetchTasks();
+
     } catch (error) {
-      console.log("Delete Task Error:", error);
+      console.log(
+        "Delete Task Error:",
+        error.response?.data || error.message
+      );
 
       setMessage(
         error.response?.data?.message ||
@@ -161,21 +236,35 @@ function Tasks() {
   };
 
   // =========================
+  // FORMAT DATE
+  // =========================
+
+  const formatDueDate = (date) => {
+    if (!date) return "No due date";
+
+    return new Date(date).toLocaleDateString(
+      "en-IN",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }
+    );
+  };
+
+  // =========================
   // SEARCH + FILTER
   // =========================
 
   const filteredTasks = tasks.filter((task) => {
-    // Search using task title
     const matchesSearch = task.title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
 
-    // Status filter
     const matchesStatus =
       statusFilter === "All" ||
       task.status === statusFilter;
 
-    // Priority filter
     const matchesPriority =
       priorityFilter === "All" ||
       task.priority === priorityFilter;
@@ -205,7 +294,6 @@ function Tasks() {
       {/* PAGE TITLE */}
 
       <h1>Tasks</h1>
-
 
       {/* =========================
           ADD / EDIT TASK FORM
@@ -285,6 +373,38 @@ function Tasks() {
           </option>
         </select>
 
+        {/* Project Assignment */}
+
+        <select
+          value={project}
+          onChange={(e) =>
+            setProject(e.target.value)
+          }
+        >
+          <option value="">
+            Select Project
+          </option>
+
+          {projects.map((item) => (
+            <option
+              key={item._id}
+              value={item._id}
+            >
+              {item.name}
+            </option>
+          ))}
+        </select>
+
+        {/* Due Date */}
+
+        <input
+          type="date"
+          value={dueDate}
+          onChange={(e) =>
+            setDueDate(e.target.value)
+          }
+        />
+
         {/* Add / Update Button */}
 
         <button
@@ -296,7 +416,7 @@ function Tasks() {
             : "+ Add Task"}
         </button>
 
-        {/* Cancel Edit */}
+        {/* Cancel */}
 
         {editingId && (
           <button
@@ -318,7 +438,6 @@ function Tasks() {
 
       </form>
 
-
       {/* =========================
           MY TASKS
       ========================== */}
@@ -327,14 +446,9 @@ function Tasks() {
 
         <h2>My Tasks</h2>
 
-
-        {/* =========================
-            SEARCH + FILTER
-        ========================== */}
+        {/* SEARCH + FILTER */}
 
         <div className="task-filters">
-
-          {/* Search */}
 
           <input
             type="text"
@@ -345,9 +459,6 @@ function Tasks() {
               setSearchTerm(e.target.value)
             }
           />
-
-
-          {/* Status Filter */}
 
           <select
             className="task-filter-select"
@@ -372,9 +483,6 @@ function Tasks() {
               Completed
             </option>
           </select>
-
-
-          {/* Priority Filter */}
 
           <select
             className="task-filter-select"
@@ -402,10 +510,7 @@ function Tasks() {
 
         </div>
 
-
-        {/* =========================
-            TASK CARDS
-        ========================== */}
+        {/* TASK CARDS */}
 
         {filteredTasks.length === 0 ? (
 
@@ -428,19 +533,37 @@ function Tasks() {
               key={task._id}
             >
 
-              {/* Task Title */}
-
               <h3>
                 {task.title}
               </h3>
 
-
-              {/* Description */}
-
               <p>
-                {task.description}
+                {task.description ||
+                  "No description"}
               </p>
 
+              {/* Project + Due Date */}
+
+              <div className="task-extra-info">
+
+                <p>
+                  <strong>
+                    Project:
+                  </strong>{" "}
+                  {task.project?.name ||
+                    "No Project"}
+                </p>
+
+                <p>
+                  <strong>
+                    Due Date:
+                  </strong>{" "}
+                  {formatDueDate(
+                    task.dueDate
+                  )}
+                </p>
+
+              </div>
 
               {/* Status + Priority */}
 
@@ -455,7 +578,6 @@ function Tasks() {
                 </span>
 
               </div>
-
 
               {/* Actions */}
 

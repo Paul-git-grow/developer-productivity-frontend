@@ -416,3 +416,23 @@
     flex: 1;
   }
 }
+
+/* =========================
+   TASK EXTRA INFORMATION
+========================= */
+
+.task-extra-info {
+  margin: 14px 0;
+  padding: 12px;
+  background: rgba(99, 102, 241, 0.06);
+  border-radius: 8px;
+}
+
+.task-extra-info p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+.task-extra-info strong {
+  font-weight: 600;
+}
