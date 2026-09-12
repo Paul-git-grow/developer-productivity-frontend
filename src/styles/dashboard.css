@@ -473,3 +473,160 @@
     overflow-x: auto;
   }
 }
+
+
+/* =====================================
+   RECENT ACTIVITY
+===================================== */
+
+.recent-activity-card {
+  background: var(--card-bg, #ffffff);
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.recent-activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.recent-activity-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.recent-activity-header p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.view-all-activity-btn {
+  background: transparent;
+  border: none;
+  color: #6366f1;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.recent-activity-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.recent-activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.activity-info h4 {
+  margin: 0 0 5px;
+  font-size: 14px;
+}
+
+.activity-info p {
+  margin: 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.activity-right {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.activity-status {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.activity-completed {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+}
+
+.activity-progress {
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563eb;
+}
+
+.activity-pending {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+.activity-date {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.activity-empty {
+  text-align: center;
+  padding: 35px 20px;
+}
+
+.activity-empty span {
+  font-size: 30px;
+}
+
+.activity-empty h4 {
+  margin: 10px 0 5px;
+}
+
+.activity-empty p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+  .recent-activity-item {
+    align-items: flex-start;
+  }
+
+  .activity-right {
+    min-width: 95px;
+  }
+
+  .recent-activity-header {
+    align-items: flex-start;
+  }
+}

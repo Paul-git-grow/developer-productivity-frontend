@@ -29,6 +29,10 @@ function Dashboard({ setActivePage }) {
     fetchTasks();
   }, []);
 
+  // ==============================
+  // TASK STATISTICS
+  // ==============================
+
   const totalTasks = tasks.length;
 
   const completedTasks = tasks.filter(
@@ -48,6 +52,43 @@ function Dashboard({ setActivePage }) {
       ? Math.round((completedTasks / totalTasks) * 100)
       : 0;
 
+  // ==============================
+  // RECENT ACTIVITY
+  // ==============================
+
+  const recentActivities = [...tasks]
+    .sort(
+      (a, b) =>
+        new Date(b.updatedAt || b.createdAt) -
+        new Date(a.updatedAt || a.createdAt)
+    )
+    .slice(0, 5);
+
+  const formatActivityDate = (date) => {
+    if (!date) return "";
+
+    const activityDate = new Date(date);
+
+    return activityDate.toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
+  const getActivityIcon = (status) => {
+    if (status === "Completed") {
+      return "✅";
+    }
+
+    if (status === "In Progress") {
+      return "🔄";
+    }
+
+    return "⏳";
+  };
+
   if (loading) {
     return (
       <div className="dashboard-page">
@@ -59,7 +100,9 @@ function Dashboard({ setActivePage }) {
   return (
     <div className="dashboard-page">
 
-      {/* Welcome Section */}
+      {/* ==============================
+          Welcome Section
+      ============================== */}
 
       <section className="welcome-section">
         <div>
@@ -79,7 +122,9 @@ function Dashboard({ setActivePage }) {
       </section>
 
 
-      {/* Stats */}
+      {/* ==============================
+          Statistics
+      ============================== */}
 
       <section className="stats-grid">
 
@@ -114,7 +159,9 @@ function Dashboard({ setActivePage }) {
       </section>
 
 
-      {/* Today's Tasks + Focus Timer */}
+      {/* ==============================
+          Today's Tasks + Focus Timer
+      ============================== */}
 
       <section className="dashboard-main-grid">
 
@@ -129,12 +176,115 @@ function Dashboard({ setActivePage }) {
       </section>
 
 
-      {/* Weekly Productivity */}
+      {/* ==============================
+          Weekly Productivity
+      ============================== */}
 
       <ProductivityChart tasks={tasks} />
 
 
-      {/* Quick Actions */}
+      {/* ==============================
+          Recent Activity
+      ============================== */}
+
+      <section className="recent-activity-card">
+
+        <div className="recent-activity-header">
+          <div>
+            <h3>Recent Activity</h3>
+            <p>Your latest task updates</p>
+          </div>
+
+          <button
+            className="view-all-activity-btn"
+            onClick={() => setActivePage("Tasks")}
+          >
+            View All
+          </button>
+        </div>
+
+        <div className="recent-activity-list">
+
+          {recentActivities.length > 0 ? (
+
+            recentActivities.map((task) => (
+
+              <div
+                className="recent-activity-item"
+                key={task._id}
+              >
+
+                <div className="activity-left">
+
+                  <div className="activity-icon">
+                    {getActivityIcon(task.status)}
+                  </div>
+
+                  <div className="activity-info">
+
+                    <h4>{task.title}</h4>
+
+                    <p>
+                      {task.project?.name
+                        ? task.project.name
+                        : "General Task"}
+                    </p>
+
+                  </div>
+
+                </div>
+
+
+                <div className="activity-right">
+
+                  <span
+                    className={`activity-status ${
+                      task.status === "Completed"
+                        ? "activity-completed"
+                        : task.status === "In Progress"
+                        ? "activity-progress"
+                        : "activity-pending"
+                    }`}
+                  >
+                    {task.status}
+                  </span>
+
+                  <span className="activity-date">
+                    {formatActivityDate(
+                      task.updatedAt || task.createdAt
+                    )}
+                  </span>
+
+                </div>
+
+              </div>
+
+            ))
+
+          ) : (
+
+            <div className="activity-empty">
+
+              <span>📋</span>
+
+              <h4>No recent activity</h4>
+
+              <p>
+                Create or update a task to see activity here.
+              </p>
+
+            </div>
+
+          )}
+
+        </div>
+
+      </section>
+
+
+      {/* ==============================
+          Quick Actions
+      ============================== */}
 
       <QuickActions />
 
