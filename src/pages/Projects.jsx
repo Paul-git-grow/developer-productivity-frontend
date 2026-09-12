@@ -11,7 +11,7 @@ function Projects() {
   const [loading, setLoading] = useState(true);
 
   // =========================
-  // CREATE PROJECT FORM
+  // CREATE PROJECT
   // =========================
 
   const [showForm, setShowForm] = useState(false);
@@ -31,13 +31,29 @@ function Projects() {
   const [statusFilter, setStatusFilter] = useState("All");
 
   // =========================
+  // VIEW PROJECT
+  // =========================
+
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // =========================
+  // EDIT PROJECT
+  // =========================
+
+  const [editingProject, setEditingProject] = useState(null);
+
+  const [editName, setEditName] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editStatus, setEditStatus] = useState("Planning");
+  const [editProgress, setEditProgress] = useState(0);
+
+  // =========================
   // GET PROJECTS
   // =========================
 
   const fetchProjects = async () => {
     try {
       const response = await API.get("/projects");
-
       setProjects(response.data);
     } catch (error) {
       console.log(
@@ -75,16 +91,13 @@ function Projects() {
 
       setMessage("Project created successfully");
 
-      // Reset form
       setName("");
       setDescription("");
       setStatus("Planning");
       setProgress(0);
 
-      // Reload projects
       await fetchProjects();
 
-      // Close form after success
       setTimeout(() => {
         setShowForm(false);
         setMessage("");
@@ -117,16 +130,97 @@ function Projects() {
   };
 
   // =========================
-  // SEARCH + FILTER LOGIC
+  // OPEN EDIT FORM
+  // =========================
+
+  const handleEditClick = (project) => {
+    setEditingProject(project);
+
+    setEditName(project.name);
+    setEditDescription(project.description || "");
+    setEditStatus(project.status);
+    setEditProgress(project.progress);
+  };
+
+  // =========================
+  // UPDATE PROJECT
+  // =========================
+
+  const handleUpdateProject = async (e) => {
+    e.preventDefault();
+
+    if (!editName.trim()) {
+      alert("Project name is required");
+      return;
+    }
+
+    try {
+      await API.put(`/projects/${editingProject._id}`, {
+        name: editName,
+        description: editDescription,
+        status: editStatus,
+        progress: Number(editProgress),
+      });
+
+      alert("Project updated successfully");
+
+      setEditingProject(null);
+
+      await fetchProjects();
+    } catch (error) {
+      console.log(
+        "Project Update Error:",
+        error.response?.data || error.message
+      );
+
+      alert(
+        error.response?.data?.message ||
+          "Project update failed"
+      );
+    }
+  };
+
+  // =========================
+  // DELETE PROJECT
+  // =========================
+
+  const handleDeleteProject = async (projectId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this project?"
+    );
+
+    if (!confirmDelete) {
+      return;
+    }
+
+    try {
+      await API.delete(`/projects/${projectId}`);
+
+      alert("Project deleted successfully");
+
+      await fetchProjects();
+    } catch (error) {
+      console.log(
+        "Project Delete Error:",
+        error.response?.data || error.message
+      );
+
+      alert(
+        error.response?.data?.message ||
+          "Project deletion failed"
+      );
+    }
+  };
+
+  // =========================
+  // SEARCH + FILTER
   // =========================
 
   const filteredProjects = projects.filter((project) => {
-    // Search project by name
     const matchesSearch = project.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
 
-    // Filter project by status
     const matchesStatus =
       statusFilter === "All" ||
       project.status === statusFilter;
@@ -135,7 +229,7 @@ function Projects() {
   });
 
   // =========================
-  // LOADING STATE
+  // LOADING
   // =========================
 
   if (loading) {
@@ -149,18 +243,12 @@ function Projects() {
   return (
     <div className="projects-page">
 
-      {/* =========================
-          PAGE HEADER
-      ========================== */}
+      {/* PAGE HEADER */}
 
       <div className="projects-header">
-
         <div>
           <h1>Projects</h1>
-
-          <p>
-            Manage and track your projects.
-          </p>
+          <p>Manage and track your projects.</p>
         </div>
 
         <button
@@ -173,17 +261,11 @@ function Projects() {
         >
           + Create Project
         </button>
-
       </div>
 
-
-      {/* =========================
-          SEARCH + FILTER
-      ========================== */}
+      {/* SEARCH + FILTER */}
 
       <div className="project-filters">
-
-        {/* Search */}
 
         <input
           type="text"
@@ -195,9 +277,6 @@ function Projects() {
           }
         />
 
-
-        {/* Status Filter */}
-
         <select
           className="project-filter-select"
           value={statusFilter}
@@ -205,43 +284,24 @@ function Projects() {
             setStatusFilter(e.target.value)
           }
         >
-          <option value="All">
-            All Status
-          </option>
-
-          <option value="Planning">
-            Planning
-          </option>
-
-          <option value="In Progress">
-            In Progress
-          </option>
-
-          <option value="Completed">
-            Completed
-          </option>
+          <option value="All">All Status</option>
+          <option value="Planning">Planning</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
         </select>
 
       </div>
 
-
-      {/* =========================
-          CREATE PROJECT MODAL
-      ========================== */}
+      {/* CREATE PROJECT MODAL */}
 
       {showForm && (
-
         <div className="project-form-overlay">
 
           <div className="project-form-box">
 
-            {/* Modal Header */}
-
             <div className="project-form-header">
 
-              <h2>
-                Create Project
-              </h2>
+              <h2>Create Project</h2>
 
               <button
                 type="button"
@@ -253,16 +313,9 @@ function Projects() {
 
             </div>
 
-
-            {/* Create Project Form */}
-
             <form onSubmit={handleCreateProject}>
 
-              {/* Project Name */}
-
-              <label>
-                Project Name
-              </label>
+              <label>Project Name</label>
 
               <input
                 type="text"
@@ -274,12 +327,7 @@ function Projects() {
                 required
               />
 
-
-              {/* Description */}
-
-              <label>
-                Description
-              </label>
+              <label>Description</label>
 
               <textarea
                 placeholder="Enter project description"
@@ -289,12 +337,7 @@ function Projects() {
                 }
               />
 
-
-              {/* Status */}
-
-              <label>
-                Status
-              </label>
+              <label>Status</label>
 
               <select
                 value={status}
@@ -302,39 +345,26 @@ function Projects() {
                   setStatus(e.target.value)
                 }
               >
-                <option value="Planning">
-                  Planning
-                </option>
-
+                <option value="Planning">Planning</option>
                 <option value="In Progress">
                   In Progress
                 </option>
-
                 <option value="Completed">
                   Completed
                 </option>
               </select>
 
-
-              {/* Progress */}
-
-              <label>
-                Progress
-              </label>
+              <label>Progress</label>
 
               <input
                 type="number"
                 min="0"
                 max="100"
-                placeholder="0 - 100"
                 value={progress}
                 onChange={(e) =>
                   setProgress(e.target.value)
                 }
               />
-
-
-              {/* Submit */}
 
               <button
                 type="submit"
@@ -342,9 +372,6 @@ function Projects() {
               >
                 Create Project
               </button>
-
-
-              {/* Message */}
 
               {message && (
                 <p className="project-form-message">
@@ -355,15 +382,10 @@ function Projects() {
             </form>
 
           </div>
-
         </div>
-
       )}
 
-
-      {/* =========================
-          PROJECT LIST
-      ========================== */}
+      {/* PROJECT LIST */}
 
       {filteredProjects.length === 0 ? (
 
@@ -394,44 +416,26 @@ function Projects() {
               key={project._id}
             >
 
-              {/* Project Name */}
-
-              <h3>
-                {project.name}
-              </h3>
-
-
-              {/* Description */}
+              <h3>{project.name}</h3>
 
               <p>
                 {project.description ||
                   "No description"}
               </p>
 
-
-              {/* Status */}
-
-              <span>
+              <span className="project-status">
                 {project.status}
               </span>
 
-
-              {/* Progress Information */}
-
               <div className="project-progress-info">
 
-                <p>
-                  Progress
-                </p>
+                <p>Progress</p>
 
                 <strong>
                   {project.progress}%
                 </strong>
 
               </div>
-
-
-              {/* Progress Bar */}
 
               <div className="project-progress">
 
@@ -444,9 +448,198 @@ function Projects() {
 
               </div>
 
+              {/* ACTION BUTTONS */}
+
+              <div className="project-actions">
+
+                <button
+                  className="view-project-btn"
+                  onClick={() =>
+                    setSelectedProject(project)
+                  }
+                >
+                  View
+                </button>
+
+                <button
+                  className="edit-project-btn"
+                  onClick={() =>
+                    handleEditClick(project)
+                  }
+                >
+                  Edit
+                </button>
+
+                <button
+                  className="delete-project-btn"
+                  onClick={() =>
+                    handleDeleteProject(project._id)
+                  }
+                >
+                  Delete
+                </button>
+
+              </div>
+
             </div>
 
           ))}
+
+        </div>
+
+      )}
+
+      {/* VIEW PROJECT MODAL */}
+
+      {selectedProject && (
+
+        <div className="project-form-overlay">
+
+          <div className="project-details-box">
+
+            <div className="project-form-header">
+
+              <h2>Project Details</h2>
+
+              <button
+                className="close-project-form"
+                onClick={() =>
+                  setSelectedProject(null)
+                }
+              >
+                ×
+              </button>
+
+            </div>
+
+            <div className="project-details-content">
+
+              <p>
+                <strong>Name:</strong>{" "}
+                {selectedProject.name}
+              </p>
+
+              <p>
+                <strong>Description:</strong>{" "}
+                {selectedProject.description ||
+                  "No description"}
+              </p>
+
+              <p>
+                <strong>Status:</strong>{" "}
+                {selectedProject.status}
+              </p>
+
+              <p>
+                <strong>Progress:</strong>{" "}
+                {selectedProject.progress}%
+              </p>
+
+              <p>
+                <strong>Created:</strong>{" "}
+                {selectedProject.createdAt
+                  ? new Date(
+                      selectedProject.createdAt
+                    ).toLocaleDateString()
+                  : "N/A"}
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
+      {/* EDIT PROJECT MODAL */}
+
+      {editingProject && (
+
+        <div className="project-form-overlay">
+
+          <div className="project-form-box">
+
+            <div className="project-form-header">
+
+              <h2>Edit Project</h2>
+
+              <button
+                className="close-project-form"
+                onClick={() =>
+                  setEditingProject(null)
+                }
+              >
+                ×
+              </button>
+
+            </div>
+
+            <form onSubmit={handleUpdateProject}>
+
+              <label>Project Name</label>
+
+              <input
+                type="text"
+                value={editName}
+                onChange={(e) =>
+                  setEditName(e.target.value)
+                }
+                required
+              />
+
+              <label>Description</label>
+
+              <textarea
+                value={editDescription}
+                onChange={(e) =>
+                  setEditDescription(e.target.value)
+                }
+              />
+
+              <label>Status</label>
+
+              <select
+                value={editStatus}
+                onChange={(e) =>
+                  setEditStatus(e.target.value)
+                }
+              >
+                <option value="Planning">
+                  Planning
+                </option>
+
+                <option value="In Progress">
+                  In Progress
+                </option>
+
+                <option value="Completed">
+                  Completed
+                </option>
+              </select>
+
+              <label>Progress</label>
+
+              <input
+                type="number"
+                min="0"
+                max="100"
+                value={editProgress}
+                onChange={(e) =>
+                  setEditProgress(e.target.value)
+                }
+              />
+
+              <button
+                type="submit"
+                className="submit-project-btn"
+              >
+                Update Project
+              </button>
+
+            </form>
+
+          </div>
 
         </div>
 

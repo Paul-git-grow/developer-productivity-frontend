@@ -376,3 +376,63 @@
     box-sizing: border-box;
   }
 }
+
+/* =========================
+   PROJECT ACTION BUTTONS
+========================= */
+
+.project-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.project-actions button {
+  flex: 1;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.view-project-btn {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.edit-project-btn {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.delete-project-btn {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.project-actions button:hover {
+  opacity: 0.85;
+}
+
+
+/* =========================
+   PROJECT DETAILS MODAL
+========================= */
+
+.project-details-box {
+  background: var(--card-bg, #ffffff);
+  width: 90%;
+  max-width: 500px;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.project-details-content {
+  margin-top: 20px;
+}
+
+.project-details-content p {
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
